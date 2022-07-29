@@ -1,0 +1,116 @@
+/*------------------------------------------------- */
+/* =  General */
+/*------------------------------------------------- */
+.ip-header {
+    position: fixed;
+    top: 0;
+    z-index: 99999;
+    min-height: 480px;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+}
+  
+  .ip-header h1 {
+    margin: 0;
+}
+  
+.ip-logo,
+.ip-loader {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    cursor: default;
+    pointer-events: none;
+}
+  
+.ip-logo {
+    top: 0;
+    height: 100%;
+    transform: translate3d(0, 25%, 0);
+    text-align: center;
+}
+  
+  .ip-logo img {
+    max-width: 250px;
+  }
+  
+  .ip-loader {
+    bottom: 20%;
+  }
+  
+  .ip-header .ip-inner {
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .ip-header .ip-loader svg {
+    fill: #000000;
+  }
+  
+  .ip-header .ip-loader svg path.ip-loader-circlebg {
+    stroke: #333333 !important;
+    stroke-width: 5px;
+  }
+  
+  .ip-header .ip-loader svg path.ip-loader-circle {
+    transition: stroke-dashoffset 0.2s;
+    stroke: #e90101;
+    stroke-width: 2px;
+  }
+  
+  .loading .ip-logo,
+  .loading .ip-loader {
+    opacity: 1;
+    animation: animInitialHeader 1s cubic-bezier(0.7, 0, 0.3, 1) both;
+  }
+  
+  .loading .ip-loader {
+    animation-delay: 0.2s;
+  }
+  
+  @keyframes animInitialHeader {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 800px, 0);
+    }
+  }
+  .loaded .ip-logo,
+  .loaded .ip-loader {
+    opacity: 1;
+  }
+  
+  .loaded .ip-logo {
+    transform-origin: 50% 0;
+    animation: animLoadedLogo 1s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+  }
+  
+  @keyframes animLoadedLogo {
+    to {
+      transform: translate3d(0, 100%, 0) translate3d(0, 50px, 0) scale3d(0.65, 0.65, 1);
+    }
+  }
+  .loaded .ip-logo {
+    animation: animLoadedLoader 0.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+  }
+  
+  .loaded .ip-loader {
+    animation: animLoadedLoader 0.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+  }
+  
+  @keyframes animLoadedLoader {
+    to {
+      opacity: 0;
+      transform: translate3d(0, -100%, 0) scale3d(0.3, 0.3, 1);
+    }
+  }
+  .loaded .ip-header {
+    animation: animLoadedHeader 1s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+  }
+  
+  @keyframes animLoadedHeader {
+    to {
+      transform: translate3d(0, -100%, 0);
+    }
+  }
