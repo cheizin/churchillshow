@@ -28,7 +28,7 @@ $user_id = $_SESSION['id'];
 
 	</div>
 
-<a href="https://churchill.potentialsoftwares.com/payments/securepayment.php">Back</a>
+<a href="https://churchill.potentialsoftwares.com/payments2/securepayment.php">Back</a>
 
 Loading Please Wait
 
@@ -70,7 +70,7 @@ $iframelink = 'https://www.pesapal.com/API/PostPesapalDirectOrderV4';//change to
         $currency = "USD";
 
 
-$callback_url = 'https://churchill.potentialsoftwares.com/payments/PaymentsIPN.php'; //redirect url, the page that will handle the response from pesapal.
+$callback_url = 'https://churchill.potentialsoftwares.com/payments2/PaymentsIPN.php'; //redirect url, the page that will handle the response from pesapal.
 
 $post_xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?><PesapalDirectOrderInfo xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" Currency=\"".$currency."\" Amount=\"".$amount."\" Description=\"".$desc."\" Type=\"".$type."\" Reference=\"".$reference."\" FirstName=\"".$first_name."\" LastName=\"".$last_name."\" Email=\"".$email."\" PhoneNumber=\"".$phonenumber."\" xmlns=\"http://www.pesapal.com\" />";
 $post_xml = htmlentities($post_xml);

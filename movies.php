@@ -272,8 +272,11 @@ $video_views = mysqli_num_rows(mysqli_query($dbc,"SELECT video_id FROM video_vie
                             <div class="row">
                                 <!-- movie cover --> 
                                 <div class="login__condition">
-                                    <a href="../login.php" class="login__btn-inner">Pay via Mpesa or Card</a>
+                                    <button onclick="SelectPackage(4);" class="login__btn-inner">
+                                    Pay via Mpesa or Card</button>
+ 
                                 </div> 
+
                                 <!-- end movie cover -->
                             </div>
                         </div>
@@ -414,6 +417,31 @@ $video_views = mysqli_num_rows(mysqli_query($dbc,"SELECT video_id FROM video_vie
 	<script  src="../assets/scripts/main.js"></script>
     <script  src="../assets/scripts/profile_settings.js"></script>
     <script>
+    function SelectPackage(id)
+    {
+   
+        form_url = 'https://churchill.potentialsoftwares.com/payments2/PaymentsIframe.php';
+        form_method = 'POST';
+        form_data = {id:id};
+    
+        $.ajax({
+            method:form_method,
+            url: form_url,
+            data: form_data,
+            
+            success: function(data)
+            {
+                console.log(data);
+            },
+            error: function(xhr)
+            {
+                console.log(xhr);
+            }
+        })
+        
+   
+
+    }
 
         
         $(window).on('load', function() {
