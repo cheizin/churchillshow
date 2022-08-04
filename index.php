@@ -18,7 +18,7 @@ include("controllers/setup/connect.php");
         <meta name="author" content="Busolo Mackenzie">
 
         <!-- Page Titles  -->
-        <title>Churchill | Movies Online </title> 
+        <title>Churchill Show | Movies Online </title> 
 
         <!-- Fav Icons -->
         <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
