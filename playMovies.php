@@ -63,7 +63,7 @@ $video_views = mysqli_num_rows(mysqli_query($dbc,"SELECT video_id FROM video_vie
         <meta name="author" content="Busolo Mackenzie">
 
         <!-- Page Titles  -->
-        <title>Trapflix | Stream Hood Movies Online </title> 
+        <title>Churchill | Stream Hood Movies Online </title> 
 
         <!-- Fav Icons -->
         <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
@@ -231,14 +231,17 @@ $video_views = mysqli_num_rows(mysqli_query($dbc,"SELECT video_id FROM video_vie
                     <!-- content -->
                     <!-- content -->
                     <div class="col-12 col-lg-12">
+                       
                     <div class="embed-youtube">
 
-                    <iframe width="1100" height="550" class="responsive-iframe" src="https://www.youtube.com/embed/<?php echo $video_post['videoname'] ;?>?modestbranding=1&autoplay=1&rel=0&showinfo=0" title="Trapflix video player"
+                    <iframe width="1100" height="550" class="responsive-iframe" src="https://www.youtube.com/embed/<?php echo $video_post['videoname'] ;?>?modestbranding=1&autoplay=1&rel=0&showinfo=0" title="Churchill video player"
                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
 
                     </div>
-
+                     <!--
+                    <div id="player"></div>
+-->
                     </div>
                     
                     <!-- end content -->
@@ -363,7 +366,7 @@ $video_views = mysqli_num_rows(mysqli_query($dbc,"SELECT video_id FROM video_vie
                     <div class="row">
                         <div class="col-lg-1 col-xs-12 form-group">
                            <a href="#" class="iq-user-dropdown search-toggle p-0 d-flex align-items-center" data-toggle="search-toggle">
-                                <img src="images/user/user.jpg" class="img-fluid avatar-40 rounded-circle" alt="user">
+                                <img src="#" class="img-fluid avatar-40 rounded-circle" alt="user">
                             </a>
                         </div>
 
@@ -555,7 +558,7 @@ $video_views = mysqli_num_rows(mysqli_query($dbc,"SELECT video_id FROM video_vie
 				</div>
 
 				<div class="col-6 col-md-4 col-lg-3 col-xl-2 order-1 order-md-2 order-lg-1 order-xl-2 offset-md-2 offset-lg-0 offset-xl-1">
-					<h6 class="footer__title">Trapflix</h6>
+					<h6 class="footer__title">Churchill</h6>
 					<div class="footer__nav">
 						<a href="../about-us.html">About Us</a>
 						<a href="../run-ads.html">Run Ads</a>
@@ -613,7 +616,7 @@ $video_views = mysqli_num_rows(mysqli_query($dbc,"SELECT video_id FROM video_vie
                         <span class="footer__copyright"> 
                             &copy; 2022 <a href="../index.html">Trapflix</a>. All Rights Reserved. 
                             <br /> 
-                            Developed by <a href="http://maswiz.co/" target="_blank" rel="noopener noreferrer"> Maswiz</a>
+                            Developed by <a href="https://potentialsoftwares.com/" target="_blank" rel="noopener noreferrer"> Potential Softwares</a>
                         </span>
 
 					</div>
@@ -643,6 +646,49 @@ $video_views = mysqli_num_rows(mysqli_query($dbc,"SELECT video_id FROM video_vie
     <script  src="../assets/scripts/fav_movie.js"></script>
 	<script  src="../assets/scripts/main.js"></script>
     <script  src="../assets/scripts/profile_settings.js"></script>
+    <!--<script>
+  // 2. This code loads the IFrame Player API code asynchronously.
+  var tag = document.createElement('script');
+
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // 3. This function creates an <iframe> (and YouTube player)
+  //    after the API code downloads.
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '390',
+      width: '640',
+      videoId: '<?php echo $video_post['videoname'] ;?>',
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  // 4. The API will call this function when the video player is ready.
+  function onPlayerReady(event) {
+    event.target.playVideo();
+  }
+
+  // 5. The API calls this function when the player's state changes.
+  //    The function indicates that when playing a video (state=1),
+  //    the player should play for six seconds and then stop.
+  var done = false;
+  function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING && !done) {
+      setTimeout(stopVideo, 6000000);
+      done = true;
+    }
+  }
+  function stopVideo() {
+    player.stopVideo();
+  }
+</script>
+-->
     <script>
         $(window).on('load', function() {
             if (feather) {

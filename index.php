@@ -18,7 +18,7 @@ include("controllers/setup/connect.php");
         <meta name="author" content="Busolo Mackenzie">
 
         <!-- Page Titles  -->
-        <title>Trapflix | Stream Hood Movies Online </title> 
+        <title>Churchill | Movies Online </title> 
 
         <!-- Fav Icons -->
         <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
@@ -64,6 +64,46 @@ include("controllers/setup/connect.php");
 
 	-->
 	<!-- Top Navigation @start -->
+				<?php
+				if(isset($_SESSION['email']))
+			{
+
+				?>
+				<section>
+					<?php
+						if(isset($_GET['payment_success']))
+						{
+							echo $_GET['payment_success'];
+						}
+					?>
+				</section>
+				<section>
+					<?php
+							$user_pay = mysqli_fetch_array(mysqli_query($dbc,"SELECT date_recorded FROM users_subscriptions WHERE user_id='".$_SESSION['id']."' && pesapal_notification_type='COMPLETED' ORDER BY id DESC LIMIT 1"));
+							$date_paid = $user_pay['date_recorded'];
+
+							$earlier = new DateTime($date_paid);
+
+							$current_date = date('Y-m-d');
+							$later = new DateTime($current_date);
+
+							$days_remaining = $later->diff($earlier)->format("%a"); //3
+
+
+
+
+			//check subscription
+			require_once('payments/checkusersubscription.php');
+			//end check subscription
+
+				?>
+				</section>
+
+			<?php
+			}
+			?>
+
+
 <header id="sticky-header" class="header header--static">
     <div class="container">
         <div class="row">
@@ -118,7 +158,7 @@ include("controllers/setup/connect.php");
                             <a class="header__nav-link" href="profile.php"><?php echo $_SESSION['name'];?></a>
                         </li>
                         <li class="header__nav-item">
-                            <a class="header__nav-link" href="contact-us.html">Log Out</a>
+                            <a class="header__nav-link" href="logout.php">Log Out</a>
                         </li>
                     
 						<?php
@@ -281,7 +321,7 @@ include("controllers/setup/connect.php");
 		<div class="container">
 			<div class="row">
 			<?php
-        $sql_query1 =  mysqli_query($dbc,"SELECT * FROM main_categories WHERE category_name ='Popular On Trapflix' ");
+        $sql_query1 =  mysqli_query($dbc,"SELECT * FROM main_categories WHERE category_name ='Popular On Churchill2' ");
 
         $number = 1;
         if($total_rows1 = mysqli_num_rows($sql_query1) > 0)
@@ -289,7 +329,7 @@ include("controllers/setup/connect.php");
 
           <?php
           $no = 1;
-           $sql2 = mysqli_query($dbc,"SELECT * FROM main_categories WHERE category_name ='Popular On Trapflix' ORDER BY category_name ASC");
+           $sql2 = mysqli_query($dbc,"SELECT * FROM main_categories WHERE category_name ='Popular On Churchill2' ORDER BY category_name ASC");
            while($row2 = mysqli_fetch_array($sql2))
 			{
 
@@ -525,7 +565,7 @@ if($total_rows1 = mysqli_num_rows($sql_query1) > 0)
 
  ?>
 
-	<!-- top rated movies @start -->
+	<!-- 
 	<section class="section movies_section">
 		<div class="container">
 			<div class="row">
@@ -904,422 +944,7 @@ if($total_rows1 = mysqli_num_rows($sql_query1) > 0)
 			</div>
 		</div>
 	</section>
-	<!-- top rated movies @end -->
-
-    <!-- channels @start-->
-	<section class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<h2 class="section__title"><a href="channels.html">Channels</a></h2>
-				</div>
-
-				<div class="col-12">
-					<div class="section__carousel-wrap">
-						<div class="section__carousel owl-carousel" id="subscriptions">
-
-                                
-							<div class="card">
-								<a href="channel/details33c7.html?cc=13849855" class="card__cover">
-                                                                            <img src="assets/media/channels/posters/villasmill/villasmill-image.jpg" alt="Jugg City Episode 2 poster image.">                                                                  
-                                        									<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1615 8.05308C13.1615 9.79908 11.7455 11.2141 9.9995 11.2141C8.2535 11.2141 6.8385 9.79908 6.8385 8.05308C6.8385 6.30608 8.2535 4.89108 9.9995 4.89108C11.7455 4.89108 13.1615 6.30608 13.1615 8.05308Z" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9.998 15.3549C13.806 15.3549 17.289 12.6169 19.25 8.05289C17.289 3.48888 13.806 0.750885 9.998 0.750885H10.002C6.194 0.750885 2.711 3.48888 0.75 8.05289C2.711 12.6169 6.194 15.3549 10.002 15.3549H9.998Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-								</a>
-								<h3 class="card__title card__title--subs"><a href="channel/details33c7.html?cc=13849855">Villasmill</a></h3>
-								<ul class="card__list card__list--subs">
-									<li>More than 20  movies </li>
-								</ul>
-							</div>
-
-                                
-							<div class="card">
-								<a href="channel/details4f37.html?cc=6644079" class="card__cover">
-                                                                            <img src="assets/media/channels/posters/test-channel-ii/test-channel-ii-image.jpg" alt="Jugg City Episode 2 poster image.">                                                                  
-                                        									<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1615 8.05308C13.1615 9.79908 11.7455 11.2141 9.9995 11.2141C8.2535 11.2141 6.8385 9.79908 6.8385 8.05308C6.8385 6.30608 8.2535 4.89108 9.9995 4.89108C11.7455 4.89108 13.1615 6.30608 13.1615 8.05308Z" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9.998 15.3549C13.806 15.3549 17.289 12.6169 19.25 8.05289C17.289 3.48888 13.806 0.750885 9.998 0.750885H10.002C6.194 0.750885 2.711 3.48888 0.75 8.05289C2.711 12.6169 6.194 15.3549 10.002 15.3549H9.998Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-								</a>
-								<h3 class="card__title card__title--subs"><a href="channel/details4f37.html?cc=6644079">Swarnkar</a></h3>
-								<ul class="card__list card__list--subs">
-									<li>More than 1  movie </li>
-								</ul>
-							</div>
-
-                                
-							<div class="card">
-								<a href="channel/detailse7d1.html?cc=9488792" class="card__cover">
-                                                                            <img src="assets/media/channels/posters/test-channel-iii/test-channel-iii-image.jpg" alt="Jugg City Episode 2 poster image.">                                                                  
-                                        									<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1615 8.05308C13.1615 9.79908 11.7455 11.2141 9.9995 11.2141C8.2535 11.2141 6.8385 9.79908 6.8385 8.05308C6.8385 6.30608 8.2535 4.89108 9.9995 4.89108C11.7455 4.89108 13.1615 6.30608 13.1615 8.05308Z" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9.998 15.3549C13.806 15.3549 17.289 12.6169 19.25 8.05289C17.289 3.48888 13.806 0.750885 9.998 0.750885H10.002C6.194 0.750885 2.711 3.48888 0.75 8.05289C2.711 12.6169 6.194 15.3549 10.002 15.3549H9.998Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-								</a>
-								<h3 class="card__title card__title--subs"><a href="channel/detailse7d1.html?cc=9488792">Hunfer</a></h3>
-								<ul class="card__list card__list--subs">
-									<li>More than 1  movie </li>
-								</ul>
-							</div>
-
-                                
-							<div class="card">
-								<a href="channel/details9129.html?cc=13767029" class="card__cover">
-                                                                            <img src="assets/media/channels/posters/test-channel-iv/test-channel-iv-image.jpg" alt="Jugg City Episode 2 poster image.">                                                                  
-                                        									<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1615 8.05308C13.1615 9.79908 11.7455 11.2141 9.9995 11.2141C8.2535 11.2141 6.8385 9.79908 6.8385 8.05308C6.8385 6.30608 8.2535 4.89108 9.9995 4.89108C11.7455 4.89108 13.1615 6.30608 13.1615 8.05308Z" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9.998 15.3549C13.806 15.3549 17.289 12.6169 19.25 8.05289C17.289 3.48888 13.806 0.750885 9.998 0.750885H10.002C6.194 0.750885 2.711 3.48888 0.75 8.05289C2.711 12.6169 6.194 15.3549 10.002 15.3549H9.998Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-								</a>
-								<h3 class="card__title card__title--subs"><a href="channel/details9129.html?cc=13767029">Owens</a></h3>
-								<ul class="card__list card__list--subs">
-									<li>More than 1  movie </li>
-								</ul>
-							</div>
-
-                                
-							<div class="card">
-								<a href="channel/detailsf78f.html?cc=5931932" class="card__cover">
-                                                                            <img src="assets/media/channels/posters/test-channel-v/test-channel-v-image.jpg" alt="Jugg City Episode 2 poster image.">                                                                  
-                                        									<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1615 8.05308C13.1615 9.79908 11.7455 11.2141 9.9995 11.2141C8.2535 11.2141 6.8385 9.79908 6.8385 8.05308C6.8385 6.30608 8.2535 4.89108 9.9995 4.89108C11.7455 4.89108 13.1615 6.30608 13.1615 8.05308Z" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9.998 15.3549C13.806 15.3549 17.289 12.6169 19.25 8.05289C17.289 3.48888 13.806 0.750885 9.998 0.750885H10.002C6.194 0.750885 2.711 3.48888 0.75 8.05289C2.711 12.6169 6.194 15.3549 10.002 15.3549H9.998Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-								</a>
-								<h3 class="card__title card__title--subs"><a href="channel/detailsf78f.html?cc=5931932">Tunechi</a></h3>
-								<ul class="card__list card__list--subs">
-									<li>More than 1  movie </li>
-								</ul>
-							</div>
-
-                                
-							<div class="card">
-								<a href="channel/details6438.html?cc=8951571" class="card__cover">
-                                                                            <img src="assets/media/channels/posters/test-channel-vi/test-channel-vi-image.jpg" alt="Jugg City Episode 2 poster image.">                                                                  
-                                        									<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1615 8.05308C13.1615 9.79908 11.7455 11.2141 9.9995 11.2141C8.2535 11.2141 6.8385 9.79908 6.8385 8.05308C6.8385 6.30608 8.2535 4.89108 9.9995 4.89108C11.7455 4.89108 13.1615 6.30608 13.1615 8.05308Z" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9.998 15.3549C13.806 15.3549 17.289 12.6169 19.25 8.05289C17.289 3.48888 13.806 0.750885 9.998 0.750885H10.002C6.194 0.750885 2.711 3.48888 0.75 8.05289C2.711 12.6169 6.194 15.3549 10.002 15.3549H9.998Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-								</a>
-								<h3 class="card__title card__title--subs"><a href="channel/details6438.html?cc=8951571">Litvin</a></h3>
-								<ul class="card__list card__list--subs">
-									<li>More than 1  movie </li>
-								</ul>
-							</div>
-
-                                
-							<div class="card">
-								<a href="channel/details0d85.html?cc=10264079" class="card__cover">
-                                                                            <img src="assets/media/channels/posters/test-channel-viii/test-channel-viii-image.jpg" alt="Jugg City Episode 2 poster image.">                                                                  
-                                        									<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1615 8.05308C13.1615 9.79908 11.7455 11.2141 9.9995 11.2141C8.2535 11.2141 6.8385 9.79908 6.8385 8.05308C6.8385 6.30608 8.2535 4.89108 9.9995 4.89108C11.7455 4.89108 13.1615 6.30608 13.1615 8.05308Z" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9.998 15.3549C13.806 15.3549 17.289 12.6169 19.25 8.05289C17.289 3.48888 13.806 0.750885 9.998 0.750885H10.002C6.194 0.750885 2.711 3.48888 0.75 8.05289C2.711 12.6169 6.194 15.3549 10.002 15.3549H9.998Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-								</a>
-								<h3 class="card__title card__title--subs"><a href="channel/details0d85.html?cc=10264079">Mooneeram</a></h3>
-								<ul class="card__list card__list--subs">
-									<li>More than 0  movies </li>
-								</ul>
-							</div>
-
-                                
-							<div class="card">
-								<a href="channel/details0c57.html?cc=13626342" class="card__cover">
-                                                                            <img src="assets/media/channels/posters/test-channel-ix/test-channel-ix-image.jpg" alt="Jugg City Episode 2 poster image.">                                                                  
-                                        									<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1615 8.05308C13.1615 9.79908 11.7455 11.2141 9.9995 11.2141C8.2535 11.2141 6.8385 9.79908 6.8385 8.05308C6.8385 6.30608 8.2535 4.89108 9.9995 4.89108C11.7455 4.89108 13.1615 6.30608 13.1615 8.05308Z" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9.998 15.3549C13.806 15.3549 17.289 12.6169 19.25 8.05289C17.289 3.48888 13.806 0.750885 9.998 0.750885H10.002C6.194 0.750885 2.711 3.48888 0.75 8.05289C2.711 12.6169 6.194 15.3549 10.002 15.3549H9.998Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-								</a>
-								<h3 class="card__title card__title--subs"><a href="channel/details0c57.html?cc=13626342">Steven Van</a></h3>
-								<ul class="card__list card__list--subs">
-									<li>More than 0  movies </li>
-								</ul>
-							</div>
-
-                                
-							<div class="card">
-								<a href="channel/detailsfdee.html?cc=5473851" class="card__cover">
-                                                                            <img src="assets/media/channels/posters/test-channel-x/test-channel-x-image.jpg" alt="Jugg City Episode 2 poster image.">                                                                  
-                                        									<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1615 8.05308C13.1615 9.79908 11.7455 11.2141 9.9995 11.2141C8.2535 11.2141 6.8385 9.79908 6.8385 8.05308C6.8385 6.30608 8.2535 4.89108 9.9995 4.89108C11.7455 4.89108 13.1615 6.30608 13.1615 8.05308Z" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9.998 15.3549C13.806 15.3549 17.289 12.6169 19.25 8.05289C17.289 3.48888 13.806 0.750885 9.998 0.750885H10.002C6.194 0.750885 2.711 3.48888 0.75 8.05289C2.711 12.6169 6.194 15.3549 10.002 15.3549H9.998Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-								</a>
-								<h3 class="card__title card__title--subs"><a href="channel/detailsfdee.html?cc=5473851">Dadwal</a></h3>
-								<ul class="card__list card__list--subs">
-									<li>More than 0  movies </li>
-								</ul>
-							</div>
-
-                                
-							<div class="card">
-								<a href="channel/detailscc75.html?cc=879840" class="card__cover">
-                                                                            <img src="assets/media/channels/posters/test-channel-ivv/test-channel-ivv-image.jpg" alt="Jugg City Episode 2 poster image.">                                                                  
-                                        									<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1615 8.05308C13.1615 9.79908 11.7455 11.2141 9.9995 11.2141C8.2535 11.2141 6.8385 9.79908 6.8385 8.05308C6.8385 6.30608 8.2535 4.89108 9.9995 4.89108C11.7455 4.89108 13.1615 6.30608 13.1615 8.05308Z" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9.998 15.3549C13.806 15.3549 17.289 12.6169 19.25 8.05289C17.289 3.48888 13.806 0.750885 9.998 0.750885H10.002C6.194 0.750885 2.711 3.48888 0.75 8.05289C2.711 12.6169 6.194 15.3549 10.002 15.3549H9.998Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-								</a>
-								<h3 class="card__title card__title--subs"><a href="channel/detailscc75.html?cc=879840">The Creator</a></h3>
-								<ul class="card__list card__list--subs">
-									<li>More than 0  movies </li>
-								</ul>
-							</div>
-
-                                
-							<div class="card">
-								<a href="channel/details974a.html?cc=2145351" class="card__cover">
-                                                                            <img src="assets/media/channels/posters/test-channel-xii/test-channel-xii-image.jpg" alt="Jugg City Episode 2 poster image.">                                                                  
-                                        									<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1615 8.05308C13.1615 9.79908 11.7455 11.2141 9.9995 11.2141C8.2535 11.2141 6.8385 9.79908 6.8385 8.05308C6.8385 6.30608 8.2535 4.89108 9.9995 4.89108C11.7455 4.89108 13.1615 6.30608 13.1615 8.05308Z" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9.998 15.3549C13.806 15.3549 17.289 12.6169 19.25 8.05289C17.289 3.48888 13.806 0.750885 9.998 0.750885H10.002C6.194 0.750885 2.711 3.48888 0.75 8.05289C2.711 12.6169 6.194 15.3549 10.002 15.3549H9.998Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-								</a>
-								<h3 class="card__title card__title--subs"><a href="channel/details974a.html?cc=2145351">Sky Channel</a></h3>
-								<ul class="card__list card__list--subs">
-									<li>More than 0  movies </li>
-								</ul>
-							</div>
-
-                                
-							<div class="card">
-								<a href="channel/details461e.html?cc=12591868" class="card__cover">
-                                                                            <img src="assets/media/channels/posters/test-channel-xiv/test-channel-xiv-image.jpg" alt="Jugg City Episode 2 poster image.">                                                                  
-                                        									<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1615 8.05308C13.1615 9.79908 11.7455 11.2141 9.9995 11.2141C8.2535 11.2141 6.8385 9.79908 6.8385 8.05308C6.8385 6.30608 8.2535 4.89108 9.9995 4.89108C11.7455 4.89108 13.1615 6.30608 13.1615 8.05308Z" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9.998 15.3549C13.806 15.3549 17.289 12.6169 19.25 8.05289C17.289 3.48888 13.806 0.750885 9.998 0.750885H10.002C6.194 0.750885 2.711 3.48888 0.75 8.05289C2.711 12.6169 6.194 15.3549 10.002 15.3549H9.998Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-								</a>
-								<h3 class="card__title card__title--subs"><a href="channel/details461e.html?cc=12591868">Memphis HD</a></h3>
-								<ul class="card__list card__list--subs">
-									<li>More than 0  movies </li>
-								</ul>
-							</div>
-
-                                
-							<div class="card">
-								<a href="channel/detailsf6aa.html?cc=11352734" class="card__cover">
-                                                                            <img src="assets/media/channels/posters/test-channel-xv/test-channel-xv-image.jpg" alt="Jugg City Episode 2 poster image.">                                                                  
-                                        									<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1615 8.05308C13.1615 9.79908 11.7455 11.2141 9.9995 11.2141C8.2535 11.2141 6.8385 9.79908 6.8385 8.05308C6.8385 6.30608 8.2535 4.89108 9.9995 4.89108C11.7455 4.89108 13.1615 6.30608 13.1615 8.05308Z" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9.998 15.3549C13.806 15.3549 17.289 12.6169 19.25 8.05289C17.289 3.48888 13.806 0.750885 9.998 0.750885H10.002C6.194 0.750885 2.711 3.48888 0.75 8.05289C2.711 12.6169 6.194 15.3549 10.002 15.3549H9.998Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-								</a>
-								<h3 class="card__title card__title--subs"><a href="channel/detailsf6aa.html?cc=11352734">Hot Ones</a></h3>
-								<ul class="card__list card__list--subs">
-									<li>More than 0  movies </li>
-								</ul>
-							</div>
-
-                                
-							<div class="card">
-								<a href="channel/details4a61.html?cc=14034487" class="card__cover">
-                                                                            <img src="assets/media/channels/posters/test-channel-10/test-channel-10-image.jpg" alt="Jugg City Episode 2 poster image.">                                                                  
-                                        									<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1615 8.05308C13.1615 9.79908 11.7455 11.2141 9.9995 11.2141C8.2535 11.2141 6.8385 9.79908 6.8385 8.05308C6.8385 6.30608 8.2535 4.89108 9.9995 4.89108C11.7455 4.89108 13.1615 6.30608 13.1615 8.05308Z" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9.998 15.3549C13.806 15.3549 17.289 12.6169 19.25 8.05289C17.289 3.48888 13.806 0.750885 9.998 0.750885H10.002C6.194 0.750885 2.711 3.48888 0.75 8.05289C2.711 12.6169 6.194 15.3549 10.002 15.3549H9.998Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-								</a>
-								<h3 class="card__title card__title--subs"><a href="channel/details4a61.html?cc=14034487">Yatch Club</a></h3>
-								<ul class="card__list card__list--subs">
-									<li>More than 0  movies </li>
-								</ul>
-							</div>
-
-                                
-						</div>
-
-						<button class="section__nav section__nav--cards section__nav--prev" data-nav="#subscriptions" type="button"><svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.25 7.72559L16.25 7.72559" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.2998 1.70124L1.2498 7.72524L7.2998 13.7502" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-						<button class="section__nav section__nav--cards section__nav--next" data-nav="#subscriptions" type="button"><svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.75 7.72559L0.75 7.72559" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.7002 1.70124L15.7502 7.72524L9.7002 13.7502" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- channels @end -->
-
-	<!-- pricing plans @start-->
-	<section class="section section--pb0 section--gradient">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<h2 class="section__title">Select Your Plan</h2>
-					<p class="section__text">No hidden fees, equipment rentals, or installation appointments.</p>
-				</div>
-			</div>
-
-			<div class="row">
-
-                     
-
-				<div class="col-12 col-md-6 col-xl-4 order-md-2 order-xl-1">
-					<div class="plan">
-						<h3 class="plan__title">Regular</h3>
-						<ul class="plan__list">
-                                 
-							<li class="green">
-                                <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.43994 6.95981L6.77477 12.2924L17.4399 1.62723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 
-                                Feature One                            </li>
-                                 
-							<li class="green">
-                                <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.43994 6.95981L6.77477 12.2924L17.4399 1.62723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 
-                                Feature Two                            </li>
-                                 
-							<li class="green">
-                                <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.43994 6.95981L6.77477 12.2924L17.4399 1.62723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 
-                                Feature Three                            </li>
-                                 
-							<li class="green">
-                                <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.43994 6.95981L6.77477 12.2924L17.4399 1.62723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 
-                                Feature Four                            </li>
-                                 
-						</ul>
-						<span class="plan__price">$34.99<span>/month</span></span>
-                                                    <a href="login.html" class="plan__btn">Sign In</a> 
-                            					</div>
-				</div>
-                        <!-- modal top-up -->
-	<form action="#" id="modal-topup73" class="zoom-anim-dialog mfp-hide modal modal--form">
-		<button class="modal__close" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.41,12l4.3-4.29a1,1,0,1,0-1.42-1.42L12,10.59,7.71,6.29A1,1,0,0,0,6.29,7.71L10.59,12l-4.3,4.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L12,13.41l4.29,4.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z"/></svg></button>
-
-		<h4 class="sign__title">Replenishment</h4>
-
-		<div class="sign__group sign__group--row">
-			<label class="sign__label">Your balance:</label>
-			<span class="sign__value">$<br />
-<b>Notice</b>:  Undefined variable: account_balance in <b>/home/trapflixtv/public_html/staging/public/pricingPlanModal.php</b> on line <b>9</b><br />
-0.00</span>
-		</div>
-
-		<div class="sign__group sign__group--row">
-			<label class="sign__label" for="value">Amount:</label>
-			<select class="sign__select" name="value" id="value">
-				<option value="34.99">$34.99</option> 
-			</select>
-
-			<span class="sign__text sign__text--small">You can spend money from your account on the renewal of the connected packages, or on the purchase of goods on our website.</span>
-		</div>
-
-		<div class="sign__group sign__group--row">
-			<label class="sign__label">Payment method:</label>
-
-			<ul class="sign__radio">
-				<li>
-					<input id="type2" type="radio" name="type">
-					<label for="type2">Card</label>
-				</li>
-				<li>
-					<input id="type3" type="radio" name="type">
-					<label for="type3">Paypal</label>
-				</li>
-			</ul>
-		</div>
-
-		<button class="sign__btn" type="button">Proceed</button>
-	</form>
-	<!-- end modal top-up --> 
-                     
-
-				<div class="col-12 col-md-6 col-xl-4 order-md-2 order-xl-1">
-					<div class="plan">
-						<h3 class="plan__title">Popular</h3>
-						<ul class="plan__list">
-                                 
-							<li class="green">
-                                <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.43994 6.95981L6.77477 12.2924L17.4399 1.62723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 
-                                Feature One                            </li>
-                                 
-							<li class="green">
-                                <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.43994 6.95981L6.77477 12.2924L17.4399 1.62723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 
-                                Feature Two                            </li>
-                                 
-							<li class="green">
-                                <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.43994 6.95981L6.77477 12.2924L17.4399 1.62723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 
-                                Feature Three                            </li>
-                                 
-							<li class="green">
-                                <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.43994 6.95981L6.77477 12.2924L17.4399 1.62723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 
-                                Feature Four                            </li>
-                                 
-						</ul>
-						<span class="plan__price">$49.99<span>/month</span></span>
-                                                    <a href="login.html" class="plan__btn">Sign In</a> 
-                            					</div>
-				</div>
-                        <!-- modal top-up -->
-	<form action="#" id="modal-topup74" class="zoom-anim-dialog mfp-hide modal modal--form">
-		<button class="modal__close" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.41,12l4.3-4.29a1,1,0,1,0-1.42-1.42L12,10.59,7.71,6.29A1,1,0,0,0,6.29,7.71L10.59,12l-4.3,4.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L12,13.41l4.29,4.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z"/></svg></button>
-
-		<h4 class="sign__title">Replenishment</h4>
-
-		<div class="sign__group sign__group--row">
-			<label class="sign__label">Your balance:</label>
-			<span class="sign__value">$<br />
-<b>Notice</b>:  Undefined variable: account_balance in <b>/home/trapflixtv/public_html/staging/public/pricingPlanModal.php</b> on line <b>9</b><br />
-0.00</span>
-		</div>
-
-		<div class="sign__group sign__group--row">
-			<label class="sign__label" for="value">Amount:</label>
-			<select class="sign__select" name="value" id="value">
-				<option value="49.99">$49.99</option> 
-			</select>
-
-			<span class="sign__text sign__text--small">You can spend money from your account on the renewal of the connected packages, or on the purchase of goods on our website.</span>
-		</div>
-
-		<div class="sign__group sign__group--row">
-			<label class="sign__label">Payment method:</label>
-
-			<ul class="sign__radio">
-				<li>
-					<input id="type2" type="radio" name="type">
-					<label for="type2">Card</label>
-				</li>
-				<li>
-					<input id="type3" type="radio" name="type">
-					<label for="type3">Paypal</label>
-				</li>
-			</ul>
-		</div>
-
-		<button class="sign__btn" type="button">Proceed</button>
-	</form>
-	<!-- end modal top-up --> 
-                     
-
-				<div class="col-12 col-md-6 col-xl-4 order-md-2 order-xl-1">
-					<div class="plan">
-						<h3 class="plan__title">Premium</h3>
-						<ul class="plan__list">
-                                 
-							<li class="green">
-                                <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.43994 6.95981L6.77477 12.2924L17.4399 1.62723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 
-                                Feature One                            </li>
-                                 
-							<li class="green">
-                                <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.43994 6.95981L6.77477 12.2924L17.4399 1.62723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 
-                                Feature Two                            </li>
-                                 
-							<li class="green">
-                                <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.43994 6.95981L6.77477 12.2924L17.4399 1.62723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 
-                                Feature Three                            </li>
-                                 
-							<li class="green">
-                                <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.43994 6.95981L6.77477 12.2924L17.4399 1.62723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 
-                                Feature Four                            </li>
-                                 
-						</ul>
-						<span class="plan__price">$79.99<span>/month</span></span>
-                                                    <a href="login.html" class="plan__btn">Sign In</a> 
-                            					</div>
-				</div>
-                        <!-- modal top-up -->
-	<form action="#" id="modal-topup75" class="zoom-anim-dialog mfp-hide modal modal--form">
-		<button class="modal__close" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.41,12l4.3-4.29a1,1,0,1,0-1.42-1.42L12,10.59,7.71,6.29A1,1,0,0,0,6.29,7.71L10.59,12l-4.3,4.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L12,13.41l4.29,4.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z"/></svg></button>
-
-		<h4 class="sign__title">Replenishment</h4>
-
-		<div class="sign__group sign__group--row">
-			<label class="sign__label">Your balance:</label>
-			<span class="sign__value">$<br />
-<b>Notice</b>:  Undefined variable: account_balance in <b>/home/trapflixtv/public_html/staging/public/pricingPlanModal.php</b> on line <b>9</b><br />
-0.00</span>
-		</div>
-
-		<div class="sign__group sign__group--row">
-			<label class="sign__label" for="value">Amount:</label>
-			<select class="sign__select" name="value" id="value">
-				<option value="79.99">$79.99</option> 
-			</select>
-
-			<span class="sign__text sign__text--small">You can spend money from your account on the renewal of the connected packages, or on the purchase of goods on our website.</span>
-		</div>
-
-		<div class="sign__group sign__group--row">
-			<label class="sign__label">Payment method:</label>
-
-			<ul class="sign__radio">
-				<li>
-					<input id="type2" type="radio" name="type">
-					<label for="type2">Card</label>
-				</li>
-				<li>
-					<input id="type3" type="radio" name="type">
-					<label for="type3">Paypal</label>
-				</li>
-			</ul>
-		</div>
-
-		<button class="sign__btn" type="button">Proceed</button>
-	</form>
-	<!-- end modal top-up --> 
-                    
-			</div>
-		</div>
-	</section>
-	<!-- pricing plans @end -->
-
+	  -->
 
 
 <!-- Scroll-To-Top @start -->
@@ -1347,7 +972,7 @@ if($total_rows1 = mysqli_num_rows($sql_query1) > 0)
 				</div>
 
 				<div class="col-6 col-md-4 col-lg-3 col-xl-2 order-1 order-md-2 order-lg-1 order-xl-2 offset-md-2 offset-lg-0 offset-xl-1">
-					<h6 class="footer__title">Trapflix</h6>
+					<h6 class="footer__title">Churchill</h6>
 					<div class="footer__nav">
 						<a href="about-us.html">About Us</a>
 						<a href="run-ads.html">Run Ads</a>
@@ -1403,9 +1028,9 @@ if($total_rows1 = mysqli_num_rows($sql_query1) > 0)
 							<img src="assets/media/site-logo/logo-dark.png" alt="">
 						</a>
                         <span class="footer__copyright"> 
-                            &copy; 2022 <a href="index.html">Trapflix</a>. All Rights Reserved. 
+                            &copy; 2022 <a href="index.html"></a>. All Rights Reserved. 
                             <br /> 
-                            Developed by <a href="http://maswiz.co/" target="_blank" rel="noopener noreferrer"> Maswiz</a>
+                            Developed by <a href="https://potentialsoftwares.com" target="_blank" rel="noopener noreferrer"> Potential Softwares</a>
                         </span>
 
 					</div>
@@ -1450,7 +1075,7 @@ location.href = "movies.php?token="+token;
 }
 
 function Selectvideos(token){
-  location.href = "movie-details.php?token="+token;
+  location.href = "localMovies.php?token="+token;
 }
 
 function Selectbanner(token){

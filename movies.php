@@ -63,7 +63,7 @@ $video_views = mysqli_num_rows(mysqli_query($dbc,"SELECT video_id FROM video_vie
         <meta name="author" content="Busolo Mackenzie">
 
         <!-- Page Titles  -->
-        <title>Trapflix | Stream Hood Movies Online </title> 
+        <title>Churchill | Movies Online </title> 
 
         <!-- Fav Icons -->
         <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
@@ -203,7 +203,7 @@ $video_views = mysqli_num_rows(mysqli_query($dbc,"SELECT video_id FROM video_vie
                 
 			<!-- article -->
 			<div class="article">
-				<div class="row">
+				<div class="row" id="payments_section">
 
                         
                     <!-- content -->
@@ -272,7 +272,7 @@ $video_views = mysqli_num_rows(mysqli_query($dbc,"SELECT video_id FROM video_vie
                             <div class="row">
                                 <!-- movie cover --> 
                                 <div class="login__condition">
-                                    <a href="../login.php" class="login__btn-inner">LOG IN OR REGISTER TO WATCH MOVIE</a>
+                                    <a href="../login.php" class="login__btn-inner">Pay via Mpesa or Card</a>
                                 </div> 
                                 <!-- end movie cover -->
                             </div>
@@ -325,7 +325,7 @@ $video_views = mysqli_num_rows(mysqli_query($dbc,"SELECT video_id FROM video_vie
 				</div>
 
 				<div class="col-6 col-md-4 col-lg-3 col-xl-2 order-1 order-md-2 order-lg-1 order-xl-2 offset-md-2 offset-lg-0 offset-xl-1">
-					<h6 class="footer__title">Trapflix</h6>
+					<h6 class="footer__title">Churchill</h6>
 					<div class="footer__nav">
 						<a href="../about-us.html">About Us</a>
 						<a href="../run-ads.html">Run Ads</a>
@@ -381,9 +381,9 @@ $video_views = mysqli_num_rows(mysqli_query($dbc,"SELECT video_id FROM video_vie
 							<img src="../assets/media/site-logo/logo-dark.png" alt="">
 						</a>
                         <span class="footer__copyright"> 
-                            &copy; 2022 <a href="../index.html">Trapflix</a>. All Rights Reserved. 
+                            &copy; 2022 <a href="../index.html"></a>. All Rights Reserved. 
                             <br /> 
-                            Developed by <a href="http://maswiz.co/" target="_blank" rel="noopener noreferrer"> Maswiz</a>
+                            Developed by <a href="https://potentialsoftwares.com" target="_blank" rel="noopener noreferrer"> Potential softwares</a>
                         </span>
 
 					</div>
@@ -414,6 +414,8 @@ $video_views = mysqli_num_rows(mysqli_query($dbc,"SELECT video_id FROM video_vie
 	<script  src="../assets/scripts/main.js"></script>
     <script  src="../assets/scripts/profile_settings.js"></script>
     <script>
+
+        
         $(window).on('load', function() {
             if (feather) {
                 feather.replace({

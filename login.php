@@ -199,9 +199,9 @@ if(isset($_SESSION['email'])) {
                         
                         <button class="sign__btn" type="submit" name="loginUser" value="login">Sign in</button>
 
-                        <span class="sign__text">Don't have an account? <a href="register.html">Sign up!</a></span>
+                        <span class="sign__text">Don't have an account? <a href="register.php">Sign up!</a></span>
 
-                        <span class="sign__text">I forgot my password. <a href="forgot-password.html">Reset</a></span>
+                        <span class="sign__text">I forgot my password. <a href="#">Reset</a></span>
                     </form>
                     <!-- end authorization form -->
                 </div>
@@ -272,7 +272,7 @@ if(isset($_SESSION['email'])) {
 				</div>
 
 				<div class="col-6 col-md-4 col-lg-3 col-xl-2 order-1 order-md-2 order-lg-1 order-xl-2 offset-md-2 offset-lg-0 offset-xl-1">
-					<h6 class="footer__title">Trapflix</h6>
+					<h6 class="footer__title">Churchill</h6>
 					<div class="footer__nav">
 						<a href="about-us.html">About Us</a>
 						<a href="run-ads.html">Run Ads</a>

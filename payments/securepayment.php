@@ -12,24 +12,21 @@ include("../controllers/setup/connect.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Trapflix</title>
+    <title>Churchill</title>
     <!-- Favicon -->
-   <link rel="icon" href="../assets/img/house.jpg" type="image/x-icon" />
+   <link rel="icon" href="../assets/favicon/apple-touch-icon.png" type="image/x-icon" />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://trapflix.risksys.co.ke/css/bootstrap.min.css" />
     <!-- Typography CSS -->
-    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="https://trapflix.risksys.co.ke/css/typography.css">
     <!-- Style -->
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://trapflix.risksys.co.ke/css/style.css" />
     <!-- Responsive -->
-    <link rel="stylesheet" href="../css/responsive.css" />
+    <link rel="stylesheet" href="https://trapflix.risksys.co.ke/css/responsive.css" />
 </head>
 
 <body>
-    <div id="loading">
-        <div id="loading-center">
-        </div>
-    </div>
+
     <!-- Header -->
     <header id="main-header">
         <div class="main-header">
@@ -46,7 +43,7 @@ include("../controllers/setup/connect.php");
                                     <span class="navbar-menu-icon navbar-menu-icon--bottom"></span>
                                 </div>
                             </a>
-                            <a class="navbar-brand" href="https://trapflix.com/home.php"> <img class="img-fluid logo" src="../images/logo.png"
+                            <a class="navbar-brand" href="https://trapflix.com/home.php"> <img class="img-fluid logo" src="../assets/media/site-logo/logo-dark.png"
                                     alt="streamit" /> </a>
 
                         </nav>
@@ -66,12 +63,12 @@ include("../controllers/setup/connect.php");
                     if(isset($_GET['payment_expired']))
                     {
                         ?>
-                        <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
-  <strong>Subscription Expired!</strong> Your subscription has expired. Please update payments to continue enjoying.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+											<div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
+					<strong>Subscription Expired!</strong> Your subscription has expired. Please update payments to continue enjoying.
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					</div>
                         
                         <?php
                     }
@@ -88,26 +85,26 @@ include("../controllers/setup/connect.php");
                                         <th class="text-center prc-wrap"></th>
                                         <th class="text-center prc-wrap">
                                             <div class="prc-box">
-                                                <div class="h3 pt-4 text-white">$10<small> / Per month</small></div>
+                                                <div class="h3 pt-4 text-white">$12<small> / Per month</small></div>
                                                 <span class="type">User</span>
                                             </div>
                                         </th>
                                         <th class="text-center prc-wrap">
                                             <div class="prc-box">
-                                                <div class="h3 pt-4 text-white">$20<small> / Per month</small></div>
+                                                <div class="h3 pt-4 text-white">Ksh 24<small> / Per month</small></div>
                                                 <span class="type">Channel</span>
                                             </div>
                                         </th>
                                         <th class="text-center prc-wrap">
                                             <div class="prc-box active">
-                                                <div class="h3 pt-4 text-white">$100<small> / Per month</small></div>
+                                                <div class="h3 pt-4 text-white">Ksh 36<small> / Per month</small></div>
                                                 <span class="type">Sponsor</span>
                                             </div>
                                         </th>
                                         
                                          <th class="text-center prc-wrap">
                                             <div class="prc-box active">
-                                                <div class="h3 pt-4 text-white">$0<small> / Per month</small></div>
+                                                <div class="h3 pt-4 text-white">Ksh 2<small> / Per month</small></div>
                                                 <span class="type">Trial</span>
                                             </div>
                                         </th>
@@ -198,7 +195,7 @@ include("../controllers/setup/connect.php");
                     <div class="col-lg-3 col-md-4">
                         <ul class="f-link list-unstyled mb-0">
                             <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Cotact Us</a></li>
+                            <li><a href="#">Contact Us</a></li>
                             <li><a href="#">Legal Notice</a></li>
                         </ul>
                     </div>
@@ -234,22 +231,22 @@ include("../controllers/setup/connect.php");
     </div>
     <!-- back-to-top End -->
     <!-- jQuery, Popper JS -->
-    <script src="../js/jquery-3.4.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
+    <script src="https://trapflix.risksys.co.ke/js/jquery-3.4.1.min.js"></script>
+    <script src="https://trapflix.risksys.co.ke/js/popper.min.js"></script>
     <!-- Bootstrap JS -->
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="https://trapflix.risksys.co.ke/js/bootstrap.min.js"></script>
     <!-- Slick JS -->
-    <script src="../js/slick.min.js"></script>
+    <script src="https://trapflix.risksys.co.ke/js/slick.min.js"></script>
     <!-- owl carousel Js -->
-    <script src="../js/owl.carousel.min.js"></script>
+    <script src="https://trapflix.risksys.co.ke/js/owl.carousel.min.js"></script>
     <!-- select2 Js -->
-    <script src="../js/select2.min.js"></script>
+    <script src="https://trapflix.risksys.co.ke/js/select2.min.js"></script>
     <!-- Magnific Popup-->
-    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <script src="https://trapflix.risksys.co.ke/js/jquery.magnific-popup.min.js"></script>
     <!-- Slick Animation-->
-    <script src="../js/slick-animation.min.js"></script>
+    <script src="https://trapflix.risksys.co.ke/js/slick-animation.min.js"></script>
     <!-- Custom JS-->
-    <script src="../js/custom.js"></script>
+    <script src="https://trapflix.risksys.co.ke/js/custom.js"></script>
     <script src="payments.js"></script>
     
 </body>
