@@ -211,6 +211,7 @@ $video_views = mysqli_num_rows(mysqli_query($dbc,"SELECT video_id FROM video_vie
                     <div class="col-12 col-lg-6">
                         <div class="movie movie--details">
                             <div class="row">
+                           <?php echo $video_post['token'];?>
                                 <!-- movie cover --> 
                                 <div class="movie__cover">
                                 <img src="images/favoriteCompressed/<?php echo $video_post['thumbnail']; ?>" alt="Churchill"> 
@@ -272,9 +273,12 @@ $video_views = mysqli_num_rows(mysqli_query($dbc,"SELECT video_id FROM video_vie
                             <div class="row">
                                 <!-- movie cover --> 
                                 <div class="login__condition">
-                                    <button onclick="SelectPackage(4);" class="login__btn-inner">
-                                    Pay via Mpesa or Card</button>
- 
+                                    
+                                <form method="post" action="payments2/PaymentsIframe.php">
+                        <input type="hidden" name="id" value="4">
+                        <input type="hidden" name="token" value="<?php echo $video_post['token'];?>">
+                        <h4>   <input type="submit" name="submit" class="header__register" value="Pay via Mpesa or Card"></h4>
+                            </form>
                                 </div> 
 
                                 <!-- end movie cover -->
